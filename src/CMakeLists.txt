@@ -51,6 +51,7 @@ if (APPLE)
     set_source_files_properties(${glfw_SOURCES} PROPERTIES LANGUAGE C)
 endif()
 
+IF(NOT BIICODE)
 add_library(glfw ${glfw_SOURCES} ${glfw_HEADERS})
 set_target_properties(glfw PROPERTIES OUTPUT_NAME "${GLFW_LIB_NAME}"
                                       POSITION_INDEPENDENT_CODE ON)
@@ -90,3 +91,4 @@ if (GLFW_INSTALL)
     install(TARGETS glfw EXPORT glfwTargets DESTINATION lib${LIB_SUFFIX})
 endif()
 
+ENDIF()

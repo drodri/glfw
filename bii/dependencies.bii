@@ -1,0 +1,2 @@
+*glfw*.h + src/*.c src/*.m deps/*.c *.in src/CMakeLists.txt
+deps/getopt.c + deps/getopt.h

@@ -484,6 +484,30 @@ configure_file("${GLFW_SOURCE_DIR}/src/glfw3.pc.in"
 #--------------------------------------------------------------------
 # Add subdirectories
 #--------------------------------------------------------------------
+IF(BIICODE)
+    INCLUDE(${CMAKE_HOME_DIRECTORY}/biicode.cmake)
+    INIT_BIICODE_BLOCK()
+
+    INCLUDE(src/CMakeLists.txt)
+    INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
+    INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/deps)
+    SET(ALL_SOURCES )
+    foreach(glfwfile ${glfw_SOURCES})
+        SET(ALL_SOURCES ${ALL_SOURCES} src/${glfwfile})
+    endforeach()
+
+    SET(ALL_SOURCES ${ALL_SOURCES} "deps/glad.c" "deps/getopt.c" "deps/tinycthread.c")
+
+    SET(BII_LIB_SRC ${ALL_SOURCES})
+    SET(BII_LIB_SYSTEM_DEPS ${glfw_LIBRARIES})
+    link_libraries("${OPENGL_glu_LIBRARY}")
+
+    ADD_BIICODE_TARGETS()
+
+    target_include_directories(${BII_LIB_TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/deps)
+    target_include_directories(${BII_LIB_TARGET} PUBLIC ${GLFW_BINARY_DIR}/src)
+
+ELSE(BIICODE)
 add_subdirectory(src)
 
 if (GLFW_BUILD_EXAMPLES)
@@ -525,3 +549,4 @@ if (GLFW_INSTALL)
     endif()
 endif()
 
+ENDIF(BIICODE)

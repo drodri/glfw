@@ -1,5 +1,17 @@
 # GLFW
 
+This is a fork of the main GLFW repo for publication to [biicode](http://www.biicode.com) C/C++ dependency
+manager
+
+[![Build Status](https://travis-ci.org/drodri/glfw.svg?branch=master)](https://travis-ci.org/drodri/glfw)
+
+The github fork is: https://github.com/drodri/glfw
+
+The biicode block is: http://www.biicode.com/diego/glfw
+
+Adaptation to biicode [is quite simple](https://github.com/drodri/glfw/commit/890f514584714c54a3606dbc610327cef049c834)
+
+
 ## Introduction
 
 GLFW is a free, Open Source, multi-platform library for OpenGL and OpenGL ES
